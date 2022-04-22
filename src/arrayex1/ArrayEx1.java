@@ -6,22 +6,43 @@ import java.util.Scanner;
 public class ArrayEx1 {
 
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        String []sname = new String[10];        
-        int []age = new int[10]; 
-        int N;
+        Scanner accept = new Scanner(System.in);
+        String []cname = new String[3];        
+        String [][]items = new String[3][3];
+        double [][]price = new double[3][3]; //dynamic two dimensional array
+        double []total = new double[3];  //dynamic One dimensional array
+        double subTotal = 0;
         
-        for (N = 0; N <= 2; N++) {
-            System.out.print("Enter the name of student " + (N+1));
-            sname[N] = input.next();
-            System.out.print("Enter his/her age ");
-            age[N] = input.nextInt();
+        for (int i = 0; i <= 1 ; i++) {
+            System.out.println("Enter name for customer " + (i + 1));
+            cname[i] = accept.next();
+            total[i] = 0;
+            for (int j = 0; j <= 1; j++) {
+                System.out.println("Enter Item " + (j + 1));
+                items[i][j] = accept.next();
+                System.out.println("Enter Price for Item " + (j + 1));
+                price[i][j] = accept.nextDouble();
+                total[i] = total[i] + price[i][j];
+            }
+            subTotal += total[i];
         }
         
-        for (N = 0; N <= 2; N++) {
-            System.out.println(sname[N] + " is " + age[N] + " years old");
+        System.out.println("\n\nNAME \t ITEM1 \t ITEM2 \t ITEM3 \t TOTAL");
+        System.out.println("===================================================================================");
+        
+        for (int i = 0; i <= 1 ; i++) {
+            System.out.print(cname[i] + "\t");
+            
+            for (int j = 0; j <= 1; j++) {
+                System.out.print(items[i][j] + " @ ");
+                System.out.print(price[i][j] + "naira \t");
+            }
+            
+            System.out.println(total[i]);
         }
-
+        
+        System.out.println("\n===================================================================================");
+        System.out.println("SUB TOTAL = " + subTotal);
     }
  
 }
